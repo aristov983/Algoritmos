@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -41,6 +44,12 @@ public class App {
                     break;
                 case 10:
                     ejercicio10();
+                    break;
+                case 11:
+                    ejercicio11();
+                    break;
+                case 12:
+                    ejercicio12();
                     break;
                 default:
                     System.out.println("Esa opción no está disponible.");
@@ -120,5 +129,29 @@ public class App {
         }
     }
 
-    
+    public static void ejercicio11(){
+        Biblioteca b = new Biblioteca();
+        Libro l1 = new Libro("Las aventuras del papu", "Papulince", 1010);
+        Libro l2 = new Libro("Las aventuras del papuCHO", "Papucho", 1000);
+        b.agregarLibro(l1);
+        b.agregarLibro(l2);
+        System.out.println("Libro: "+(b.buscarPorIsbn(1000)).getTitulo());
+        System.out.println("Libro: "+((b.buscarPorIsbn(1010)).getTitulo()));
+        System.out.println("Libro: "+((b.buscarPorIsbn(999))));
+    }
+
+    public static void ejercicio12(){
+        ArrayList<Producto> productos = new ArrayList<>();
+        productos.add(new Producto("Laptop", 1200));
+        productos.add(new Producto("Mouse", 25));
+        productos.add(new Producto("Teclado", 75));
+        productos.add(new Producto("Monitor", 300));
+
+        Collections.sort(productos);
+
+        // Mostrar productos ordenados
+        for (Producto p : productos) {
+            System.out.println(p.getNombre()+" "+p.getPrecio());
+        }
+    }
 }
