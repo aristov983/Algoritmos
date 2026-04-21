@@ -5,6 +5,7 @@ import clases.Ejercicio04;
 import clases.Ejercicio05;
 import clases.Ejercicio06;
 import clases.Ejercicio07;
+import clases.Ejercicio08;
 
 import java.util.Scanner;
 
@@ -40,7 +41,8 @@ public class App {
                     Ejercicio07.ejecutar(sc);
                     break;
                 case 8:
-                    //ejercicio
+                    Ejercicio08.ejecutar(sc);
+                    break;
                 case 9:
                     //ejercicio
                 case 10:
