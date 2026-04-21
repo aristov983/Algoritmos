@@ -2,6 +2,9 @@ import clases.Ejercicio01;
 import clases.Ejercicio02;
 import clases.Ejercicio03;
 import clases.Ejercicio04;
+import clases.Ejercicio05;
+import clases.Ejercicio06;
+import clases.Ejercicio07;
 
 import java.util.Scanner;
 
@@ -28,11 +31,14 @@ public class App {
                     Ejercicio04.ejecutar(sc);
                     break;
                 case 5:
-                    //ejercicio
+                    Ejercicio05.ejecutar();
+                    break;
                 case 6:
-                    //ejercicio
+                    Ejercicio06.ejecutar(sc);
+                    break;
                 case 7:
-                    //ejercicio
+                    Ejercicio07.ejecutar(sc);
+                    break;
                 case 8:
                     //ejercicio
                 case 9:
@@ -48,7 +54,5 @@ public class App {
             }
         } while (true);
     }
-
-    
 }
 
