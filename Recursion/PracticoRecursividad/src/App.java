@@ -6,6 +6,8 @@ import clases.Ejercicio05;
 import clases.Ejercicio06;
 import clases.Ejercicio07;
 import clases.Ejercicio08;
+import clases.Ejercicio09;
+import clases.Ejercicio10;
 
 import java.util.Scanner;
 
@@ -44,9 +46,11 @@ public class App {
                     Ejercicio08.ejecutar(sc);
                     break;
                 case 9:
-                    //ejercicio
+                    Ejercicio09.ejecutar();
+                    break;
                 case 10:
-                    //ejercicio
+                    Ejercicio10.ejecutar(sc);
+                    break;
                 case 0:
                     sc.close();
                     System.out.println("==========");
