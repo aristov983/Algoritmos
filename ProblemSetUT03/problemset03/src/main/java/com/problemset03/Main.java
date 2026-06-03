@@ -3,6 +3,7 @@ package com.problemset03;
 import com.problemset03.base.ArbolGenerico;
 import com.problemset03.base.NodoGenerico;
 import com.problemset03.base.ejercicios.Empleado;
+import com.problemset03.base.ejercicios.Archivo;
 
 public class Main {
 
@@ -12,6 +13,8 @@ public class Main {
         ejercicio2();
         System.out.println();
         ejercicio3();
+        System.out.println();
+        ejercicio4();
     }
 
     public static void ejercicio1() {
@@ -92,5 +95,42 @@ public class Main {
 
         System.out.println("El empleado Martin Martinez tiene " + arbol.contarSubordinados("Martin Martinez") + " subordinados.");
 
+    }
+
+    public static void ejercicio4(){
+        NodoGenerico<Archivo> aed2 = new NodoGenerico<>(new Archivo("aed2", 0));
+
+        NodoGenerico<Archivo> trabajos = new NodoGenerico<>(new Archivo("trabajos", 0));
+
+        NodoGenerico<Archivo> programas = new NodoGenerico<>(new Archivo("programas", 0));
+
+        NodoGenerico<Archivo> h1 = new NodoGenerico<>(new Archivo("h1.doc", 3));
+
+        NodoGenerico<Archivo> h2 = new NodoGenerico<>(new Archivo("h2.doc", 2));
+
+        NodoGenerico<Archivo> robot = new NodoGenerico<>(new Archivo("Robot.java", 20));
+
+        NodoGenerico<Archivo> stocks = new NodoGenerico<>(new Archivo("Stocks.java", 25));
+
+        aed2.agregarHijo(trabajos);
+        aed2.agregarHijo(programas);
+
+        trabajos.agregarHijo(h1);
+        trabajos.agregarHijo(h2);
+
+        programas.agregarHijo(robot);
+        programas.agregarHijo(stocks);
+
+        ArbolGenerico<Archivo> arbol = new ArbolGenerico<>(aed2);
+
+        System.out.println(arbol.tamanioTotal() + " KB");
+
+        /*
+        * Postorden es el recorrido natural porque para calcular el tamaño
+        * de una carpeta primero necesito conocer el tamaño total de cada
+        * una de sus subcarpetas e hijos. Es decir, se procesan primero los
+        * descendientes y luego el nodo actual, acumulando los resultados
+        * desde abajo hacia arriba.
+        */
     }
 }

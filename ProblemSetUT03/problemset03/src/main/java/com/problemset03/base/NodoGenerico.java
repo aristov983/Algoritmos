@@ -1,4 +1,5 @@
 package com.problemset03.base;
+import com.problemset03.base.ejercicios.Archivo;
 
 public class NodoGenerico<T> {
 
@@ -91,6 +92,20 @@ public class NodoGenerico<T> {
         }
 
         return alturaMaxima + 1;
+    }
+
+    //EJ4
+    public int tamanioTotal() {
+        int total = ((Archivo) dato).getTamanio();
+
+        NodoGenerico<T> hijo = primerHijo;
+
+        while (hijo != null) {
+            total += hijo.tamanioTotal();
+            hijo = hijo.hermanoDerecho;
+        }
+
+        return total;
     }
 
 }

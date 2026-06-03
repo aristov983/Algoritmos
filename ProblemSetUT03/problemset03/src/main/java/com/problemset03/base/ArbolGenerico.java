@@ -124,4 +124,13 @@ public class ArbolGenerico<T> {
         }
         return jefe.contarNodos() - 1;
     }
+
+    //EJERCICIO 4
+
+    public int tamanioTotal() {
+        if (raiz == null) {
+            return 0;
+        }
+        return raiz.tamanioTotal();
+    }
 }
