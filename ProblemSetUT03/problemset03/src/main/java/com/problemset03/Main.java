@@ -10,6 +10,8 @@ public class Main {
         ejercicio1();
         System.out.println();
         ejercicio2();
+        System.out.println();
+        ejercicio3();
     }
 
     public static void ejercicio1() {
@@ -84,6 +86,8 @@ public class Main {
         j1.agregarHijo(e2);
         j2.agregarHijo(e3);
 
-        
+        ArbolGenerico<Empleado> arbol = new ArbolGenerico<>(g1);
+
+        System.out.println(arbol.auxImprimirJerarquia(arbol.altura()));
     }
 }

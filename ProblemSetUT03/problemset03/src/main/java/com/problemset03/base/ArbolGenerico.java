@@ -58,16 +58,26 @@ public class ArbolGenerico<T> {
         return sb.toString().trim();
     }
 
-    public void auxImprimirJerarquia(int altura){
-        StringBuilder sb = new StringBuilder();
-        imprimirJerarquia(altura, sb);
+    public String auxImprimirJerarquia(int altura){
+        if (altura!=0 && this.raiz!=null){
+            StringBuilder sb = new StringBuilder();
+            sb.append(raiz.getDato()+"\n|\n");
+            return imprimirJerarquia(altura-1, sb, raiz.getPrimerHijo());
+        }
+        return " ";
     }
 
-    //Implementar
-    //TODO: TODO TODO TODO TODO TODO TODO TODO TODO
-    public void imprimirJerarquia(int altura, StringBuilder sb){
-        if (altura!=0){
-            imprimirJerarquia(altura-1, sb);
+    public String imprimirJerarquia(int altura, StringBuilder sb, NodoGenerico<T> nodo){
+        if (altura>=0 && nodo!=null){
+            sb.append(nodo.getDato());
+            NodoGenerico<T> actual = nodo.getHemandoDerecho();
+            while (actual!=null){
+                sb.append(" - " + actual.getDato());
+                actual = actual.getHemandoDerecho();
+            }
+            if (altura>0) sb.append("\n|\n");
+            return imprimirJerarquia(altura-1, sb, nodo.getPrimerHijo());
         }
+        return sb.toString().trim();
     }
 }
