@@ -9,6 +9,14 @@ public class Empleado {
         this.cargo = cargo;
     }
 
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public String getCargo(){
+        return this.cargo;
+    }
+
     @Override
     public String toString(){
         return "El empleado " + this.nombre + " con cargo " + this.cargo;

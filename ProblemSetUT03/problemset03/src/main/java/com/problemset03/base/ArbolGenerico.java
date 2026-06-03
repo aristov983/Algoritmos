@@ -1,6 +1,9 @@
 package com.problemset03.base;
 
 import java.util.Queue;
+
+import com.problemset03.base.ejercicios.Empleado;
+
 import java.util.LinkedList;
 
 
@@ -79,5 +82,46 @@ public class ArbolGenerico<T> {
             return imprimirJerarquia(altura-1, sb, nodo.getPrimerHijo());
         }
         return sb.toString().trim();
+    }
+
+    //Parte 3 del ejercicio 3
+
+    private NodoGenerico<Empleado> buscarEmpleado(NodoGenerico<Empleado> nodo,String nombre){
+
+        if (nodo == null){
+            return null;
+        }
+
+        Empleado empleado = nodo.getDato();
+
+        if (empleado.getNombre().equals(nombre)){
+            return nodo;
+        }
+
+        NodoGenerico<Empleado> hijo = nodo.getPrimerHijo();
+
+        while (hijo != null){
+            NodoGenerico<Empleado> encontrado =
+                    buscarEmpleado(hijo, nombre);
+
+            if (encontrado != null){
+                return encontrado;
+            }
+
+            hijo = hijo.getHemandoDerecho();
+        }
+
+        return null;
+    }
+
+    public int contarSubordinados(String nombreJefe){
+        if (raiz == null){
+            return 0;
+        }
+        NodoGenerico<Empleado> jefe = buscarEmpleado((NodoGenerico<Empleado>) raiz,nombreJefe);
+        if (jefe == null){
+            return 0;
+        }
+        return jefe.contarNodos() - 1;
     }
 }

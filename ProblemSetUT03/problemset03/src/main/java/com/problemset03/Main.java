@@ -88,6 +88,9 @@ public class Main {
 
         ArbolGenerico<Empleado> arbol = new ArbolGenerico<>(g1);
 
-        System.out.println(arbol.auxImprimirJerarquia(arbol.altura()));
+        System.out.println(arbol.auxImprimirJerarquia(arbol.altura())+"\n");
+
+        System.out.println("El empleado Martin Martinez tiene " + arbol.contarSubordinados("Martin Martinez") + " subordinados.");
+
     }
 }
