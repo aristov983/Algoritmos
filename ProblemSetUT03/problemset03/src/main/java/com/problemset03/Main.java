@@ -1,136 +1,40 @@
 package com.problemset03;
 
-import com.problemset03.base.ArbolGenerico;
-import com.problemset03.base.NodoGenerico;
-import com.problemset03.base.ejercicios.Empleado;
-import com.problemset03.base.ejercicios.Archivo;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        ejercicio1();
-        System.out.println();
-        ejercicio2();
-        System.out.println();
-        ejercicio3();
-        System.out.println();
-        ejercicio4();
-    }
+        Scanner sc = new Scanner(System.in);
+        int opcion = -1;
 
-    public static void ejercicio1() {
-        System.out.println("=== Ejercicio 1 ===");
+        while (opcion != 0) {
+            System.out.println("\n=== ProblemSet 03 - Menu ===");
+            System.out.println("1. Ejercicio 1 - Preorden");
+            System.out.println("2. Ejercicio 2 - Nodos, Hojas y Altura");
+            System.out.println("3. Ejercicio 3 - Jerarquia de Empleados");
+            System.out.println("4. Ejercicio 4 - Tamano Total de Archivos");
+            System.out.println("0. Salir");
+            System.out.print("Ingrese una opcion: ");
 
-        NodoGenerico<String> a = new NodoGenerico<>("A");
-        NodoGenerico<String> b = new NodoGenerico<>("B");
-        NodoGenerico<String> c = new NodoGenerico<>("C");
-        NodoGenerico<String> d = new NodoGenerico<>("D");
-        NodoGenerico<String> e = new NodoGenerico<>("E");
-        NodoGenerico<String> f = new NodoGenerico<>("F");
-        NodoGenerico<String> g = new NodoGenerico<>("G");
+            if (sc.hasNextInt()) {
+                opcion = sc.nextInt();
+            } else {
+                sc.next();
+                continue;
+            }
 
-        a.agregarHijo(b);
-        a.agregarHijo(c);
-        a.agregarHijo(d);
+            System.out.println();
+            switch (opcion) {
+                case 1 -> Ejercicios.ejercicio1();
+                case 2 -> Ejercicios.ejercicio2();
+                case 3 -> Ejercicios.ejercicio3();
+                case 4 -> Ejercicios.ejercicio4();
+                case 0 -> System.out.println("Saliendo...");
+                default -> System.out.println("Opcion invalida. Intente de nuevo.");
+            }
+        }
 
-        b.agregarHijo(e);
-
-        d.agregarHijo(f);
-        d.agregarHijo(g);
-
-        ArbolGenerico<String> arbol = new ArbolGenerico<>(a);
-
-        System.out.println("Preorden: " + arbol.preorden());
-    }
-
-    public static void ejercicio2() {
-        System.out.println("=== Ejercicio 2 ===");
-
-        NodoGenerico<String> a = new NodoGenerico<>("A");
-        NodoGenerico<String> b = new NodoGenerico<>("B");
-        NodoGenerico<String> c = new NodoGenerico<>("C");
-        NodoGenerico<String> d = new NodoGenerico<>("D");
-        NodoGenerico<String> e = new NodoGenerico<>("E");
-        NodoGenerico<String> f = new NodoGenerico<>("F");
-        NodoGenerico<String> g = new NodoGenerico<>("G");
-
-        a.agregarHijo(b);
-        a.agregarHijo(c);
-        a.agregarHijo(d);
-
-        b.agregarHijo(e);
-        b.agregarHijo(f);
-
-        d.agregarHijo(g);
-
-        ArbolGenerico<String> arbol = new ArbolGenerico<>(a);
-
-        System.out.println("Preorden: " + arbol.preorden());
-        System.out.println("Nodos: " + arbol.contarNodos());
-        System.out.println("Hojas: " + arbol.contarHojas());
-        System.out.println("Altura: " + arbol.altura());
-    }
-
-    public static void ejercicio3(){
-        System.out.println("=== Ejercicio 3 ===");
-
-        NodoGenerico<Empleado> e1 = new NodoGenerico<>(new Empleado("Joe Done", "Empleado a cargo"));
-        NodoGenerico<Empleado> e2 = new NodoGenerico<>(new Empleado("Jane Dane", "Empleado a cargo"));
-        NodoGenerico<Empleado> e3 = new NodoGenerico<>(new Empleado("June Dune", "Empleado a cargo"));
-
-        NodoGenerico<Empleado> j1 = new NodoGenerico<Empleado>(new Empleado("Martin Martinez", "Jefe de area"));
-        NodoGenerico<Empleado> j2 = new NodoGenerico<Empleado>(new Empleado("Fernando Fernandez", "Jefe de area"));
-
-        NodoGenerico<Empleado> g1 = new NodoGenerico<Empleado>(new Empleado("Emmanuel Aristov","Gerente general"));
-
-        g1.agregarHijo(j1);
-        g1.agregarHijo(j2);
-
-        j1.agregarHijo(e1);
-        j1.agregarHijo(e2);
-        j2.agregarHijo(e3);
-
-        ArbolGenerico<Empleado> arbol = new ArbolGenerico<>(g1);
-
-        System.out.println(arbol.auxImprimirJerarquia(arbol.altura())+"\n");
-
-        System.out.println("El empleado Martin Martinez tiene " + arbol.contarSubordinados("Martin Martinez") + " subordinados.");
-
-    }
-
-    public static void ejercicio4(){
-        NodoGenerico<Archivo> aed2 = new NodoGenerico<>(new Archivo("aed2", 0));
-
-        NodoGenerico<Archivo> trabajos = new NodoGenerico<>(new Archivo("trabajos", 0));
-
-        NodoGenerico<Archivo> programas = new NodoGenerico<>(new Archivo("programas", 0));
-
-        NodoGenerico<Archivo> h1 = new NodoGenerico<>(new Archivo("h1.doc", 3));
-
-        NodoGenerico<Archivo> h2 = new NodoGenerico<>(new Archivo("h2.doc", 2));
-
-        NodoGenerico<Archivo> robot = new NodoGenerico<>(new Archivo("Robot.java", 20));
-
-        NodoGenerico<Archivo> stocks = new NodoGenerico<>(new Archivo("Stocks.java", 25));
-
-        aed2.agregarHijo(trabajos);
-        aed2.agregarHijo(programas);
-
-        trabajos.agregarHijo(h1);
-        trabajos.agregarHijo(h2);
-
-        programas.agregarHijo(robot);
-        programas.agregarHijo(stocks);
-
-        ArbolGenerico<Archivo> arbol = new ArbolGenerico<>(aed2);
-
-        System.out.println(arbol.tamanioTotal() + " KB");
-
-        /*
-        * Postorden es el recorrido natural porque para calcular el tamaño
-        * de una carpeta primero necesito conocer el tamaño total de cada
-        * una de sus subcarpetas e hijos. Es decir, se procesan primero los
-        * descendientes y luego el nodo actual, acumulando los resultados
-        * desde abajo hacia arriba.
-        */
+        sc.close();
     }
 }
