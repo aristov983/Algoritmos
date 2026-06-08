@@ -38,6 +38,19 @@ public class Trie {
         return true;
     }
 
+    public List<String> autocompletar(String prefijo) {
+        List<String> res = new ArrayList<>();
+        TrieNodo nodoActual = raiz;
+        for (char c : prefijo.toCharArray()) {
+            if (!nodoActual.hijos.containsKey(c)) {
+                return res;
+            }
+            nodoActual = nodoActual.hijos.get(c);
+        }
+        dfs(nodoActual, prefijo, res);
+        return res;
+    }
+
     public List<String> listar(){
         List<String> res = new ArrayList<>();
         dfs(raiz, "", res);
